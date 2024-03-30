@@ -1,13 +1,14 @@
 package lab4.tp2.NoticiasBackend.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.envers.Audited;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Empresa")
@@ -17,6 +18,7 @@ import org.hibernate.envers.Audited;
 @AllArgsConstructor
 @Audited
 public class Empresa extends Base{
+
     @Column(name = "denominacion")
     private String denominacion;
 
@@ -40,4 +42,7 @@ public class Empresa extends Base{
 
     @Column(name = "email")
     private String email;
+
+    @OneToMany(mappedBy = "empresa",cascade = CascadeType.ALL)
+    private List<Noticia> noticias = new ArrayList<Noticia>();
 }
