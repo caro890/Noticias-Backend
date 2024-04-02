@@ -36,8 +36,6 @@ public class Noticia extends Base{
     @Column(name = "fecha_publicacion")
     private Date fecha;
 
-    @ManyToOne
-    @JoinColumn(name = "empresa_id")
-    @JsonIgnore
-    private Empresa empresa;
+    @Column(name = "empresa_id")
+    private Long idEmpresa;
 }

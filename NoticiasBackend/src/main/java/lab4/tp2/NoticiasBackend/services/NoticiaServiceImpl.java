@@ -24,13 +24,11 @@ public class NoticiaServiceImpl extends BaseServiceImpl<Noticia,Long> implements
         this.noticiaRepository = noticiaRepository;
         this.empresaRepository = empresaRepository;
     }
+    @Override
     @Transactional
-    public Noticia saveNoticiaId(Noticia entity,Long id) throws Exception {
+    public Noticia save(Noticia entity) throws Exception {
         try {
-            if(empresaRepository.existsById(id)){
-                Optional<Empresa> empresa = empresaRepository.findById(id);
-
-                entity.setEmpresa(empresa.get());
+            if(empresaRepository.existsById(entity.getIdEmpresa())){
                 return noticiaRepository.save(entity);
             }else{
                 throw new Exception("No existe la empresa");
@@ -38,6 +36,30 @@ public class NoticiaServiceImpl extends BaseServiceImpl<Noticia,Long> implements
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
+    }
 
+    @Transactional
+    public List<Noticia> search(Long idEmpresa, String palabras) throws Exception {
+        try{
+            List<Noticia> noticias;
+            if(palabras != null || palabras.isEmpty()){
+                noticias = noticiaRepository.search(idEmpresa, palabras);
+            } else {
+                noticias = noticiaRepository.search(idEmpresa);
+            }
+            return noticias;
+        } catch(Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Transactional
+    public List<Noticia> getLastFive(Long idEmpresa) throws Exception{
+        try{
+            List<Noticia> noticias = noticiaRepository.getLastFive(idEmpresa);
+            return noticias;
+        } catch(Exception e){
+            throw new Exception(e.getMessage());
+        }
     }
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class EmpresaController extends BaseControllerImpl<Empresa, EmpresaServiceImpl>{
     @Autowired
     private EmpresaServiceImpl empresaService;
+
     @GetMapping("/listaIndex")
     public ResponseEntity<?> listaIndex() {
         try {

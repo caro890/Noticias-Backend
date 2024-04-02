@@ -8,6 +8,11 @@ import java.util.List;
 
 @Repository
 public interface EmpresaRepository extends BaseRepository<Empresa, Long> {
-    @Query("SELECT id,denominacion FROM empresa")
-    List<Empresa> listIndexEmpresa();
+
+    List<EmpresaIdDenominacionProjection> findAllProjectedBy();
+
+    interface EmpresaIdDenominacionProjection {
+        Long getId();
+        String getDenominacion();
+    }
 }

@@ -1,5 +1,6 @@
 package lab4.tp2.NoticiasBackend.services;
 
+import jakarta.transaction.Transactional;
 import lab4.tp2.NoticiasBackend.entities.Empresa;
 import lab4.tp2.NoticiasBackend.repositories.BaseRepository;
 import lab4.tp2.NoticiasBackend.repositories.EmpresaRepository;
@@ -20,9 +21,10 @@ public class EmpresaServiceImpl extends BaseServiceImpl<Empresa, Long> implement
     }
 
     @Override
-    public List<Empresa> empresasData() throws Exception {
+    @Transactional
+    public List<EmpresaRepository.EmpresaIdDenominacionProjection> empresasData() throws Exception {
         try{
-            List<Empresa> entities = empresaRepository.listIndexEmpresa();
+            List<EmpresaRepository.EmpresaIdDenominacionProjection> entities = empresaRepository.findAllProjectedBy();
             return entities;
         } catch(Exception e) {
             throw new Exception(e.getMessage());

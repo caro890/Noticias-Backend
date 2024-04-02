@@ -43,6 +43,6 @@ public class Empresa extends Base{
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "empresa",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "idEmpresa",cascade = CascadeType.ALL)
     private List<Noticia> noticias = new ArrayList<Noticia>();
 }
