@@ -14,7 +14,6 @@ public interface NoticiaRepository extends BaseRepository<Noticia, Long> {
             nativeQuery = true)
     List<Noticia> search(Long idEmpresa, String palabras);
 
-
     @Query( value  = "SELECT * from noticia WHERE empresa_id = ?1 " +
             "ORDER BY fecha_publicacion DESC",
             nativeQuery = true)

@@ -62,4 +62,5 @@ public class NoticiaServiceImpl extends BaseServiceImpl<Noticia,Long> implements
             throw new Exception(e.getMessage());
         }
     }
+
 }
