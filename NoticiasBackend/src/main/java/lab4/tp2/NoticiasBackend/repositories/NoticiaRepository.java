@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface NoticiaRepository extends BaseRepository<Noticia, Long> {
     @Query(value = "SELECT * FROM noticia WHERE empresa_id = ?1 " +
-            "AND (CONCAT(titulo_noticia, resumen_noticia) LIKE %?2%) " +
+            "AND (CONCAT(titulo_noticia, ' ', resumen_noticia) LIKE %?2%) " +
             "ORDER BY fecha_publicacion DESC",
             nativeQuery = true)
     List<Noticia> search(Long idEmpresa, String palabras);
