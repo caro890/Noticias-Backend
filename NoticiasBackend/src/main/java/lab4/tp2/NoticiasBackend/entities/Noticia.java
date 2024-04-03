@@ -18,19 +18,19 @@ import java.util.Date;
 @AllArgsConstructor
 @Audited
 public class Noticia extends Base{
-    @Column(name = "titulo_noticia")
+    @Column(name = "titulo_noticia", length = 128)
     private String titulo;
 
-    @Column(name = "resumen_noticia")
+    @Column(name = "resumen_noticia", length = 1024)
     private String resumen;
 
-    @Column(name = "imagen_noticia")
+    @Column(name = "imagen_noticia", length = 128)
     private String imagen;
 
-    @Column(name = "contenido_html")
+    @Column(name = "contenido_html", length = 20480)
     private String contenido_html;
 
-    @Column(name = "publicada")
+    @Column(name = "publicada", length = 1)
     private char publicada;
 
     @Column(name = "fecha_publicacion")

@@ -19,16 +19,16 @@ import java.util.List;
 @Audited
 public class Empresa extends Base{
 
-    @Column(name = "denominacion")
+    @Column(name = "denominacion", length = 128)
     private String denominacion;
 
-    @Column(name="telefono")
+    @Column(name="telefono", length = 50)
     private String telefono;
 
-    @Column(name = "horario_de_atencion")
+    @Column(name = "horario_de_atencion", length = 256)
     private String horario_de_atencion;
 
-    @Column(name = "quienes_somos")
+    @Column(name = "quienes_somos", length = 1024)
     private String quienes_somos;
 
     @Column(name = "latitud")
@@ -37,10 +37,10 @@ public class Empresa extends Base{
     @Column(name = "longitud")
     private Double longitud;
 
-    @Column(name = "domicilio")
+    @Column(name = "domicilio", length = 256)
     private String domicilio;
 
-    @Column(name = "email")
+    @Column(name = "email", length = 75)
     private String email;
 
     @OneToMany(mappedBy = "idEmpresa",cascade = CascadeType.ALL)
